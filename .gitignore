@@ -1,6 +1,5 @@
 node_modules/
 token
-package-lock.json
 
 ### SSH ###
 **/.ssh/id_*
