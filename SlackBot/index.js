@@ -6,7 +6,7 @@ const fs = require('fs');
 let token;
 
 try {
-  token = fs.readFileSync('token').toString('utf-8');
+  token = fs.readFileSync(`${__dirname}/../token`).toString('utf-8');
 } catch (err) {
   console.error(err);
 }
@@ -23,7 +23,7 @@ rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
 
-  if (!Number.isNaN(text)) {
+  if (!Number.isNaN(Number(text))) {
     square(rtm, text, channel);
   } else {
     switch (text) {
