@@ -1,38 +1,32 @@
-/* eslint-disable no-restricted-syntax */
 const fs = require('fs');
 
 let haksa;
 
 try {
-  haksa = fs.readFileSync('haksa.txt').toString('utf-8');
+  haksa = fs.readFileSync(`${__dirname}/haksa.txt`).toString('utf-8');
 } catch (err) {
   console.error(err);
 }
 const lines = haksa.split(/\r?\n/);
-const keys = [];
-const values = [];
+const academicSchedule = {};
 
-for (const line of lines) {
+lines.forEach((line) => {
   const pair = line.split(':');
-  keys.push(pair[0].trim());
-  values.push(pair[1].trim());
-}
-const academicSchedule = keys.reduce((acc, curr, idx) => {
-  acc[curr] = values[idx];
-  return acc;
-}, {});
+  academicSchedule[pair[0].trim()] = pair[1].trim();
+});
 
-const schedule = function (rtm, channel) {
+const schedule = function (rtm, text, channel) {
   console.log('학 사 일 정');
-  rtm.sendMessage('안내 받을 날짜를 입력 해주세요.', channel);
-  rtm.on('message', (date) => {
-    const day = date.text;
-    if (keys.includes(day)) {
-      rtm.sendMessage(academicSchedule[day], channel);
+  try {
+    if (Object.keys(academicSchedule).includes(text)) {
+      rtm.sendMessage(`${text}은 ${academicSchedule[text]}입니다.`, channel);
     } else {
       rtm.sendMessage('잘못된 입력입니다.', channel);
     }
-  });
+    return Promise.resolve(`success: ${academicSchedule[text]}`);
+  } catch (error) {
+    console.log('error!', error.data);
+    return Promise.resolve('error');
+  }
 };
-
 module.exports = schedule;

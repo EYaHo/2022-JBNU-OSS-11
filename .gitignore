@@ -1,5 +1,7 @@
 node_modules/
 token
+channelID
+IntegrationTest/
 
 ### SSH ###
 **/.ssh/id_*

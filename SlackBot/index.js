@@ -6,7 +6,7 @@ const fs = require('fs');
 let token;
 
 try {
-  token = fs.readFileSync('token').toString('utf-8');
+  token = fs.readFileSync(`${__dirname}/token`).toString('utf-8');
 } catch (err) {
   console.error(err);
 }
@@ -20,11 +20,15 @@ const greeting = require('./greeting');
 const square = require('./square');
 const schedule = require('./schedule');
 
+let askSchedule = false;
+
 rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
-
-  if (!Number.isNaN(Number(text))) {
+  if (askSchedule) {
+    schedule(rtm, text, channel);
+    askSchedule = false;
+  } else if (!Number.isNaN(Number(text))) {
     square(rtm, text, channel);
   } else {
     switch (text) {
@@ -32,7 +36,7 @@ rtm.on('message', (message) => {
         greeting(rtm, channel);
         break;
       case '학사일정':
-        schedule(rtm, channel);
+        askSchedule = true;
         break;
       default:
         rtm.sendMessage('I`m alive', channel);
