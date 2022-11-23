@@ -1,6 +1,6 @@
 const randomNumber = require('./randomNumber');
 
-const feature1 = function (rtm, channel) {
+const greeting = function (rtm, channel) {
   console.log('인사를 합시다.');
   const num = randomNumber();
   console.log(num);
@@ -22,4 +22,4 @@ const feature1 = function (rtm, channel) {
   }
 };
 
-module.exports = feature1;
+module.exports = greeting;
