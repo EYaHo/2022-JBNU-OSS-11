@@ -24,6 +24,7 @@ jobs:
         npm install @slack/rtm-api dotenv
         npm install mocha -g
         mocha SlackBot/greeting.spec.js
+        mocha SlackBot/schedule.spec.js
         mocha SlackBot/dept.spec.js
       env:
         CI: true
