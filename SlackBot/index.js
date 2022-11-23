@@ -18,20 +18,28 @@ rtm.start();
 
 const greeting = require('./greeting');
 const square = require('./square');
+const findDeptOffice = require('./dept');
 
 rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
 
   if (!Number.isNaN(Number(text))) {
+    console.log('square');
     square(rtm, text, channel);
+  } else if (text === 'hi') {
+    console.log('feature 1');
+    greeting(rtm, channel);
+  } else if (text === '학사일정') {
+    console.log('feature 2');
+  } else if (text === '오늘 밥 뭐야') {
+    console.log('feature 3');
   } else {
-    switch (text) {
-      case 'hi':
-        greeting(rtm, channel);
-        break;
-      default:
-        rtm.sendMessage('I`m alive', channel);
+    console.log('else');
+    const b = findDeptOffice(rtm, text, channel);
+
+    if (!b) {
+      rtm.sendMessage('I`m alive', channel);
     }
   }
 });
