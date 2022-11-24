@@ -33,7 +33,7 @@ const testSchedule = {
   '10/15': '개교기념일',
   '9월4일': '잘못된 입력입니다.',
   '8/1': '저장된 일정이 없습니다..',
-  '9/2': '2학기 수강신청 변경 기간',
+  // '9/2': '2학기 수강신청 변경 기간',
 };
 const keys = Object.keys(testSchedule);
 keys.forEach((date) => {
