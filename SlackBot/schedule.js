@@ -20,17 +20,21 @@ const keys = Object.keys(academicSchedule);
 const schedule = function (rtm, text, channel) {
   console.log('학 사 일 정');
   const day = text.trim();
+  let answer;
   try {
     if (text.includes('/')) {
       if (keys.includes(day)) {
-        rtm.sendMessage(`${day}은 ${academicSchedule[day]}입니다.`, channel);
+        answer = academicSchedule[day];
+        rtm.sendMessage(`${day}은 ${answer}입니다.`, channel);
       } else {
-        rtm.sendMessage('저장된 일정이 없습니다..', channel);
+        answer = '저장된 일정이 없습니다..';
+        rtm.sendMessage(answer, channel);
       }
     } else {
-      rtm.sendMessage('잘못된 입력입니다.', channel);
+      answer = '잘못된 입력입니다.';
+      rtm.sendMessage(answer, channel);
     }
-    return Promise.resolve(`success: ${academicSchedule[day]}`);
+    return Promise.resolve(`success: ${answer}`);
   } catch (error) {
     console.log('error!', error.data);
     return Promise.resolve('error');
