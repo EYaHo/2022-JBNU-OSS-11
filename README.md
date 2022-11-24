@@ -16,7 +16,6 @@ __설치__
 
   1. nodejs 설치
     
-    [bash]
     sudo apt-get install nodejs npm
     또는 Node.js 설치. url: https://nodejs.org/ko/download/
 
