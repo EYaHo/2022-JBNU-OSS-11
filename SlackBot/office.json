@@ -1,0 +1,64 @@
+{
+    "deptOffice": [
+        {
+            "dept":"Architectural Engineering",
+            "buildingName":"College of Engineering Building",
+            "buildingNumber":"1",
+            "roomNumber":"132"
+        },
+        {
+            "dept":"Mechanical Engineering",
+            "buildingName":"College of Engineering Building",
+            "buildingNumber":"4",
+            "roomNumber":"212"
+        },
+        {
+            "dept":"Urban Engineering",
+            "buildingName":"College of Engineering Building",
+            "buildingNumber":"9",
+            "roomNumber":"917"
+        },
+        {
+            "dept":"Electronic Engineering",
+            "buildingName":"College of Engineering Building",
+            "buildingNumber":"7",
+            "roomNumber":"224"
+        },
+        {
+            "dept":"Computer Science and Engineering",
+            "buildingName":"College of Engineering Building",
+            "buildingNumber":"7",
+            "roomNumber":"224"
+        },
+        {
+            "dept":"Chemical Engineering",
+            "buildingName":"College of Engineering Building",
+            "buildingNumber":"6",
+            "roomNumber":"999"
+        },
+        {
+            "dept":"Accounting",
+            "buildingName":"College of Commerce",
+            "buildingNumber":"2",
+            "roomNumber":"9999"
+        },
+        {
+            "dept":"International Trade",
+            "buildingName":"College of Commerce",
+            "buildingNumber":"1",
+            "roomNumber":"9999"
+        },
+        {
+            "dept":"Korean Language and Literature",
+            "buildingName":"College of Humanities",
+            "buildingNumber":"0",
+            "roomNumber":"320"
+        },
+        {
+            "dept":"Library and Information Science",
+            "buildingName":"College of Humanities",
+            "buildingNumber":"0",
+            "roomNumber":"427"
+        }
+    ]
+}
