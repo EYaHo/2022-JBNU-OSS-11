@@ -107,22 +107,22 @@ __사용법__
 
 __기여__
 
-  코드에 기여하고 싶다면 코드에 eslint를 적용하십시오. 룰은 airbnb-base 입니다.
-  
-  검사: eslint *.js 
-  
-  검사& 수정: eslint *.js --fix
+    코드에 기여하고 싶다면 코드에 eslint를 적용하십시오. 룰은 airbnb-base 입니다.
+
+    검사: eslint *.js 
+
+    검사& 수정: eslint *.js --fix
   
 
 __단일 테스트__
 
-  테스트는 mocha로 검사합니다.
-  
-  spec 파일을 실행하려면 channelID 파일 생성 후 슬랙 테스트 채널 ID 저장.
-  
-  mocha *.spec.js 실행.
-  
-  .github/workflows/main.yml에 자신이 작성한 *.spec.js 파일들을 추가해 주십시오.
+    테스트는 mocha로 검사합니다.
+
+    spec 파일을 실행하려면 channelID 파일 생성 후 슬랙 테스트 채널 ID 저장.
+
+    mocha *.spec.js 실행.
+
+    .github/workflows/main.yml에 자신이 작성한 *.spec.js 파일들을 추가해 주십시오.
   
 -------
 ## 라이선스
