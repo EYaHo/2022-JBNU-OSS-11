@@ -38,7 +38,7 @@ rtm.on('message', (message) => {
     console.log('square');
     square(rtm, text, channel);
 
-  } else if (text === 'hi') {
+  } else if (text === 'Hi') {
     console.log('feature 1');
     greeting(rtm, channel);
 
