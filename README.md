@@ -75,10 +75,7 @@ __사용법__
     
     nodejs SlackBot/index.js
     
-
-    Node.js로 설치한 경우.
-    
-    node SlackBot/index.js
+    node SlackBot/index.js  (Node.js로 설치한 경우)
     
 
     1. 봇에게 질문
