@@ -20,7 +20,7 @@ __설치__
     sudo apt-get install nodejs npm
     또는 Node.js 설치. url: https://nodejs.org/ko/download/
 
-  2.깃허브 연결, 소스 다운로드
+  2. 깃허브 연결, 소스 다운로드
     
     git remote add origin https://github.com/EYaHo/ChatBot-team11.git
     git pull origin main
@@ -47,29 +47,29 @@ __설치__
 
 __사용법__
     
-    0. 서버 실행
+  0. 서버 실행
     
     nodejs SlackBot/index.js
     node SlackBot/index.js  (Node.js로 설치한 경우)
     
 
-    1. 봇에게 질문
+  1. 봇에게 질문
     
     인사
     
 
-    2. 학사/일정
+  2. 학사/일정
     
     학사일정을 입력하면 날짜를 입력받는 상태가 됩니다.
     이후 날짜를 8/4 이런 형태로 입력하면 해당 날짜의 학사일정을 알려줍니다.
     
 
-    3. 진수원 메뉴
+  3. 진수원 메뉴
     
     구현 예정
     
 
-    4. 학과사무실
+  4. 학과사무실
     
     봇에게 학과 이름을 입력하면 학과 사무실이 위치한 대학, 건물 번호, 방 번호를 알려줍니다.
   
