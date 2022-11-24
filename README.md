@@ -3,12 +3,12 @@
 ### Description
 전북대학교 캠퍼스 도우미
 
-전북대 학생을 위한 간단한 챗봇입니다.
+  전북대 학생을 위한 간단한 챗봇입니다.
 
-인사도 합니다. 어떤 인사를 해 줄지는 랜덤입니다.
-전북대 학사일정을 제공합니다.
-오늘의 진수원 식당 메뉴를 제공합니다. (구현 예정)
-학과사무실의 위치를 제공합니다.
+  인사도 합니다. 어떤 인사를 해 줄지는 랜덤입니다.
+  전북대 학사일정을 제공합니다.
+  오늘의 진수원 식당 메뉴를 제공합니다. (구현 예정)
+  학과사무실의 위치를 제공합니다.
 
 #### 프로젝트 정보
 __설치__
@@ -16,6 +16,7 @@ __설치__
   [bash]
   sudo apt-get install nodejs npm
   또는 Node.js 설치. url: https://nodejs.org/ko/download/
+  
   2.깃허브 연결
   [git bash]
   git remote add origin https://github.com/EYaHo/ChatBot-team11.git
@@ -25,7 +26,7 @@ __설치__
   git branch develop
   git checkout develop
   git pull origin develop
-
+  
   [ps]
   npm install
 
