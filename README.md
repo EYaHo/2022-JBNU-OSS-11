@@ -10,6 +10,7 @@
   오늘의 진수원 식당 메뉴를 제공합니다. (구현 예정)
   학과사무실의 위치를 제공합니다.
 
+-------
 #### 프로젝트 정보
 __설치__
   1. nodejs 설치
@@ -44,11 +45,13 @@ __설치__
   SlackBot 폴더에 channelID 파일 생성 후 테스트 용 채널의 ID를 저장.
 
 __사용법__
-  0. 서버 실행
-  nodejs SlackBot/index.js
+    
+    0. 서버 실행
+    
+    nodejs SlackBot/index.js
 
-  Node.js로 설치한 경우.
-  node SlackBot/index.js
+    Node.js로 설치한 경우.
+    node SlackBot/index.js
 
   1. 봇에게 질문
   인사
@@ -63,7 +66,7 @@ __사용법__
   4. 학과사무실
   봇에게 학과 이름을 입력하면 학과 사무실이 위치한 대학, 건물 번호, 방 번호를 알려줍니다.
   
-
+--------
 #### Contribute
 __기여__
   코드에 기여하고 싶다면 코드에 eslint를 적용하십시오. 룰은 airbnb-base 입니다.
