@@ -1,16 +1,10 @@
 require('dotenv').config();
 
 const { RTMClient } = require('@slack/rtm-api');
-const fs = require('fs');
 
-let token;
+const readFile = require('./readFile');
 
-try {
-  token = fs.readFileSync(`${__dirname}/token`).toString('utf-8');
-} catch (err) {
-  console.error(err);
-}
-
+const token = readFile('token');
 console.log(token);
 
 const rtm = new RTMClient(token);
@@ -18,9 +12,7 @@ rtm.start();
 
 const greeting = require('./greeting');
 const square = require('./square');
-
 const findDeptOffice = require('./dept');
-
 const schedule = require('./schedule');
 
 let askSchedule = false;

@@ -1,39 +1,83 @@
-const fs = require('fs');
+const readFile = require('./readFile');
 
-let haksa;
+const { haksa } = readFile('haksa.json');
 
-try {
-  haksa = fs.readFileSync(`${__dirname}/haksa.txt`).toString('utf-8');
-} catch (err) {
-  console.error(err);
-}
-const lines = haksa.split(/\r?\n/);
-const academicSchedule = {};
+const parseInput = function (text) {
+  if (!text.includes('/')) {
+    return false;
+  }
+  const input = text.split('/');
 
-lines.forEach((line) => {
-  const pair = line.split(':');
-  academicSchedule[pair[0].trim()] = pair[1].trim();
-});
+  if (input.length !== 2) {
+    return false;
+  }
 
-const keys = Object.keys(academicSchedule);
+  const inputNum = [];
+  for (let i = 0; i < 2; i += 1) {
+    inputNum.push(Number(input[i].toString()));
+    if (Number.isNaN(inputNum[i])) {
+      console.log('NaN');
+      return false;
+    }
+  }
+  let str = '2022';
+  for (let i = 0; i < 2; i += 1) {
+    str += '-';
+    if (inputNum[i] < 10) {
+      str += '0';
+    }
+    str += `${inputNum[i]}`;
+  }
+
+  const inputDate = new Date(str);
+  return inputDate;
+};
 
 const schedule = function (rtm, text, channel) {
   console.log('학 사 일 정');
   const day = text.trim();
+  const outputSchedule = [];
+
   try {
-    if (text.includes('/')) {
-      if (keys.includes(day)) {
-        rtm.sendMessage(`${day}은 ${academicSchedule[day]}입니다.`, channel);
-      } else {
-        rtm.sendMessage('저장된 일정이 없습니다..', channel);
-      }
-    } else {
+    const inputDate = parseInput(day);
+    console.log(`inputDate: ${inputDate}`);
+    if (!inputDate) {
       rtm.sendMessage('잘못된 입력입니다.', channel);
+      return Promise.resolve('success: invalid input.');
     }
-    return Promise.resolve(`success: ${academicSchedule[day]}`);
+
+    for (let i = 0; i < haksa.length; i += 1) {
+      const startDate = new Date(haksa[i].start);
+      console.log('-------------------------');
+      console.log(startDate);
+      if (inputDate < startDate) {
+        console.log('break');
+        break;
+      } else {
+        const endDate = new Date(haksa[i].end);
+        console.log(endDate);
+        if (inputDate <= endDate) {
+          outputSchedule.push(haksa[i].schedule);
+          console.log(`find schedule: ${haksa[i].schedule}`);
+        }
+        console.log('continue searching...');
+      }
+    }
+
+    if (outputSchedule.length > 0) {
+      let promiseLog;
+      for (let i = 0; i < outputSchedule.length; i += 1) {
+        rtm.sendMessage(`${day}은 ${outputSchedule[i]}입니다.`, channel);
+        promiseLog += `%${outputSchedule[i]}%`;
+      }
+      return Promise.resolve(`success: ${promiseLog}`);
+    }
+    rtm.sendMessage('저장된 일정이 없습니다..', channel);
+    return Promise.resolve('success: no schedule');
   } catch (error) {
     console.log('error!', error.data);
     return Promise.resolve('error');
   }
 };
+
 module.exports = schedule;
