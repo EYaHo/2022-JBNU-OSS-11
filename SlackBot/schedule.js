@@ -65,10 +65,14 @@ const schedule = function (rtm, text, channel) {
     }
 
     if (outputSchedule.length > 0) {
-      let promiseLog;
+      let promiseLog = '';
       for (let i = 0; i < outputSchedule.length; i += 1) {
         rtm.sendMessage(`${day}은 ${outputSchedule[i]}입니다.`, channel);
-        promiseLog += `%${outputSchedule[i]}%`;
+        if (i > 0) {
+          promiseLog += `, ${outputSchedule[i]}`;
+        } else {
+          promiseLog += `${outputSchedule[i]}`;
+        }
       }
       return Promise.resolve(`success: ${promiseLog}`);
     }
