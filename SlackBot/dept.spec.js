@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const { RTMClient } = require('@slack/rtm-api');
-
+/*
 const fs = require('fs');
 
 let token;
@@ -19,15 +19,13 @@ try {
   console.error(err);
 }
 console.log(channel);
+*/
+const readFile = require('./readFile');
 
-const testArr = [
-  'Architectural Engineering',
-  'Korean Language and Literature',
-];
-const resArr = [
-  'College of Engineering Building No. 1, room: 132',
-  'College of Humanities, room: 320',
-];
+const token = readFile('token');
+console.log(token);
+const channel = readFile('channelID');
+console.log(channel);
 
 const rtm = new RTMClient(token);
 
@@ -38,14 +36,19 @@ const rtm = new RTMClient(token);
 const assert = require('assert');
 const findDeptOffice = require('./dept');
 
-testArr.forEach((value, index) => {
+const testDept = {
+  'Architectural Engineering':'College of Engineering Building No. 1, room: 132',
+  'Korean Language and Literature':'College of Humanities, room: 320',
+};
+const keys = Object.keys(testDept);
+keys.forEach((dept) => {
   describe('테스트를 시작합니다.', async () => {
     let res;
-    before(async () => { res = await findDeptOffice(rtm, value, channel); });
+    before(async () => { res = await findDeptOffice(rtm, dept, channel); });
 
-    it('학과사무실 모듈 테스트', (done) => {
+    it('학과사무실 테스트', (done) => {
       console.log(res);
-      assert.equal(res, `success: ${resArr[index]}`);
+      assert.equal(res, `success: ${testDept[dept]}`);
       done();
     });
   });

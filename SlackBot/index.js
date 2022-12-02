@@ -39,6 +39,7 @@ rtm.on('message', (message) => {
   } else {
     console.log('feature 4');
     const b = findDeptOffice(rtm, text, channel);
+    console.log(b);
 
     if (!b) {
       rtm.sendMessage('I`m alive', channel);

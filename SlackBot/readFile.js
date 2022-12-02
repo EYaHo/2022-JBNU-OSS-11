@@ -1,26 +1,26 @@
 const fs = require('fs');
 
 const readFile = function (fileName) {
-  let dataBuffer;
+  let file;
 
   if (fileName.includes('.json')) {
     try {
-      dataBuffer = fs.readFileSync(`${__dirname}/${fileName}`).toString('utf-8');
+      file = fs.readFileSync(`${__dirname}/${fileName}`).toString('utf-8');
     } catch (err) {
       console.error(err);
     }
 
-    const dataJSON = dataBuffer.toString();
+    const dataJSON = file.toString();
     return JSON.parse(dataJSON);
+  } else {
+    try {
+      file = fs.readFileSync(`${__dirname}/${fileName}`).toString('utf-8');
+    } catch (err) {
+      console.error(err);
+    }
+  
+    return file;
   }
-
-  try {
-    dataBuffer = fs.readFileSync(`${__dirname}/${fileName}`).toString('utf-8');
-  } catch (err) {
-    console.error(err);
-  }
-
-  return dataBuffer;
 };
 
 module.exports = readFile;
