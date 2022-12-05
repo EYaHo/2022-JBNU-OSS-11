@@ -85,6 +85,36 @@ const getWeekMenu = function () {
   return menuToText(weekMenu);
 };
 
+const countingStar = function (res) {
+  let star = '';
+  if (res >= 0 && res <= 20) {
+    star = '★☆☆';
+  } else if (res > 20 && res <= 30) {
+    star = '★★☆';
+  } else if (res > 30) {
+    star = '★★★';
+  }
+  return star;
+};
+
+const getTodayRank = function () {
+  const leng = getTodayMenu().length;
+  console.log(leng);
+  const star = countingStar(leng);
+  return star;
+};
+
+const dayRank = [];
+const getWeekRank = function () {
+  for (let i = 0; i < 5; i += 1) {
+    const todayMenu = week[i];
+    const res = menuToText(todayMenu).length;
+    const star = countingStar(res);
+    dayRank[i] = star;
+  }
+  return dayRank;
+};
+
 const scrap = function (period) {
   if (period === 'today') {
     return getTodayMenu();
@@ -94,4 +124,8 @@ const scrap = function (period) {
   return 'error';
 };
 
-module.exports = scrap;
+module.exports = {
+  scrap,
+  getTodayRank,
+  getWeekRank,
+};

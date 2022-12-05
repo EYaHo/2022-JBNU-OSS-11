@@ -15,6 +15,7 @@ const square = require('./square');
 const findDeptOffice = require('./dept');
 const schedule = require('./schedule');
 const menu = require('./menu');
+const ranking = require('./ranking');
 
 let askSchedule = false;
 
@@ -38,9 +39,11 @@ rtm.on('message', (message) => {
   } else if (text === '오늘 밥 뭐야') {
     console.log('feature 3');
     menu(rtm, 'today', channel);
+    ranking(rtm, 'today', channel);
   } else if (text === '이번주 뭐 나와') {
     console.log('feature 3');
     menu(rtm, 'week', channel);
+    ranking(rtm, 'week', channel);
   } else {
     console.log('feature 4');
     const b = findDeptOffice(rtm, text, channel);
