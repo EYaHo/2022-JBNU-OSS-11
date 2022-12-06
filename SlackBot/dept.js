@@ -27,17 +27,23 @@ const findDeptOffice = function (rtm, text, channel) {
         const point = stringSimilarity.compareTwoStrings(text, deptOffice[i].dept);
         if (point > max) {
           max = point;
-          answer = deptOffice[i].dept;
-          res = `${deptOffice[i].buildingName}`;
-          if (deptOffice[i].buildingNumber !== '0') {
-            res += ` No. ${deptOffice[i].buildingNumber}`;
-          }
-          res += `, room: ${deptOffice[i].roomNumber}`;
+          answer = deptOffice[i];
         }
       }
-      rtm.sendMessage(`${answer}을 말씀하시는 건가요?\n${res} 입니다.`, channel);
-      console.log(`${text}와 유사한 답 출력`);
-      return false;
+      if (answer === undefined) {
+        console.log(`${text}를 찾을 수 없습니다.`);
+        rtm.sendMessage(`${text}를 찾을 수 없습니다. 영어로 입력해주세요`, channel);
+        return false;
+      }
+
+      res = `${answer.buildingName}`;
+      if (answer.buildingNumber !== '0') {
+        res += ` No. ${answer.buildingNumber}`;
+      }
+      res += `, room: ${answer.roomNumber}`;
+      rtm.sendMessage(`${answer.dept}을 말씀하시는 건가요?\n${res} 입니다.`, channel);
+      console.log(`${text}와 비슷한 사무실 출력`);
+      return Promise.resolve('success');
     }
     rtm.sendMessage(`The office of ${text} is located in: ${res}`, channel);
     return Promise.resolve(`success: ${res}`);
