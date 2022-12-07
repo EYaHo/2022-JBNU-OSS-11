@@ -21,7 +21,7 @@ let askSchedule = false;
 
 rtm.on('message', (message) => {
   const { channel } = message;
-  const { text } = message.trim();
+  const { text } = message;
 
   if (askSchedule) {
     schedule(rtm, text, channel);
@@ -36,11 +36,11 @@ rtm.on('message', (message) => {
     console.log('feature 2');
     rtm.sendMessage('안내 받을 날짜를 입력 해주세요. ex) 9/4', channel);
     askSchedule = true;
-  } else if (text === '오늘 밥 뭐야') {
+  } else if (text.replace(/ /g, '') === '오늘밥뭐야') {
     console.log('feature 3');
     menu(rtm, 'today', channel);
     ranking(rtm, 'today', channel);
-  } else if (text === '이번주 뭐 나와') {
+  } else if (text.replace(/ /g, '') === '이번주뭐나와') {
     console.log('feature 3');
     menu(rtm, 'week', channel);
     ranking(rtm, 'week', channel);
