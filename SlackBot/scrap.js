@@ -80,9 +80,14 @@ const getTodayMenu = function () {
 };
 
 const getWeekMenu = function () {
-  const weekMenu = week[0].concat(week[1], week[2], week[3], week[4]);
-  console.log(weekMenu);
-  return menuToText(weekMenu);
+  let weekMenu = '';
+  const day = ['월', '화', '수', '목', '금'];
+  for (let i = 0; i < 5; i += 1) {
+    const dayMenu = menuToText(week[i]);
+    weekMenu += `${day[i]} : ${dayMenu}\n`;
+  }
+  console.log('이번주 메뉴 및 평점');
+  return weekMenu;
 };
 
 const countingStar = function (res) {
