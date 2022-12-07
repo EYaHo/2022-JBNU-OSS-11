@@ -21,7 +21,7 @@ let askSchedule = false;
 
 rtm.on('message', (message) => {
   const { channel } = message;
-  const { text } = message;
+  const { text } = message.trim();
 
   if (askSchedule) {
     schedule(rtm, text, channel);
@@ -29,7 +29,7 @@ rtm.on('message', (message) => {
   } else if (!Number.isNaN(Number(text))) {
     console.log('square');
     square(rtm, text, channel);
-  } else if (text === 'Hi') {
+  } else if (text.toLowerCase === 'hi') {
     console.log('feature 1');
     greeting(rtm, channel);
   } else if (text === '학사일정') {
