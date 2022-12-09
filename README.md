@@ -30,8 +30,7 @@ __설치__
     
     git branch develop
     git checkout develop
-    git pull origin develop
-    ==> 현재 main branch에 PR 되지 않아 develop 브랜치에서 받아와야 합니다.
+    git pull origin main
     
     npm install
 
@@ -43,7 +42,7 @@ __설치__
   3. 슬랙 봇 생성
     
     슬랙에 slack bot 앱 추가
-    SlackBot 폴더에 token 이란 이름의 파일 생성 후 자신이 슬랙에 추가한 봇의 토큰 저장
+    SlackBot 폴더에 token 파일 생성 후, 자신이 슬랙에 추가한 봇의 토큰 저장
 
     <for Test>
     슬랙에 봇 테스트 용 채널 생성
@@ -71,7 +70,7 @@ __사용법__
   3. 진수원 오늘의 메뉴 안내 및 평가
     
     '오늘 밥 뭐야'를 입력하면 오늘의 진수원 중식 식단과 이에 대한 평가를 안내해줍니다. 
-    '이번주 뭐 나와'를 입력하면 이번 주 요일 별 중식 식단과 평가를 안내해줍니다.
+    '이번주 뭐 나와'를 입력하면 이번 주 진수원 요일 별 중식 식단과 평가를 안내해줍니다.
     평가는 ★☆☆, ★★☆, ★★★ 총 3단계로 구성됩니다.
     
 
@@ -86,7 +85,7 @@ __사용법__
 
 __기여__
 
-    코드에 기여하고 싶다면 코드에 eslint를 적용하십시오. 룰은 airbnb-base 입니다.
+    airbnb-base eslint 적용
 
     검사: eslint *.js 
     검사& 수정: eslint *.js --fix
@@ -96,9 +95,10 @@ __단일 테스트__
 
     테스트는 mocha로 검사합니다.
 
-    spec 파일을 실행하려면 channelID 파일 생성 후 슬랙 테스트 채널 ID를 저장합니다.
+    테스트용 spec 파일을 실행하려면 channelID 파일 생성 후 슬랙 테스트 채널 ID를 저장합니다.    
+        
     mocha *.spec.js 실행
-    .github/workflows/main.yml에 자신이 작성한 *.spec.js 파일들을 추가해 주세요.
+    (.github/workflows/main.yml에 자신이 작성한 *.spec.js 파일 추가 필요)
   
 -------
 ## 라이선스
