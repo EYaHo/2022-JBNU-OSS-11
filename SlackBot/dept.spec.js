@@ -2,14 +2,30 @@ require('dotenv').config();
 
 const { RTMClient } = require('@slack/rtm-api');
 
-const assert = require('assert');
+const fs = require('fs');
 
-const readFile = require('./readFile');
-
-const token = readFile('token');
+let token;
+try {
+  token = fs.readFileSync(`${__dirname}/token`).toString('utf-8');
+} catch (err) {
+  console.error(err);
+}
 console.log(token);
-const channel = readFile('channelID');
+
+let channel;
+try {
+  channel = fs.readFileSync(`${__dirname}/channelID`).toString('utf-8');
+} catch (err) {
+  console.error(err);
+}
 console.log(channel);
+
+const testDept = {
+  'Architectural Engineering': 'College of Engineering Building No. 1, room: 132',
+  'Korean Language and Literature': 'College of Humanities, room: 320',
+  Engineering: 'College of Engineering Building No. 9, room: 917',
+  compute: 'College of Engineering Building No. 7, room: 224',
+};
 
 const rtm = new RTMClient(token);
 
@@ -17,12 +33,9 @@ const rtm = new RTMClient(token);
   await rtm.start().catch(console.error);
 })();
 
+const assert = require('assert');
 const findDeptOffice = require('./dept');
 
-const testDept = {
-  'Architectural Engineering': 'College of Engineering Building No. 1, room: 132',
-  'Korean Language and Literature': 'College of Humanities, room: 320',
-};
 const keys = Object.keys(testDept);
 keys.forEach((dept) => {
   describe('테스트를 시작합니다.', async () => {
