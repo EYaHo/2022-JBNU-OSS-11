@@ -20,18 +20,12 @@ try {
 }
 console.log(channel);
 
-const testArr = [
-  'Architectural Engineering',
-  'Korean Language and Literature',
-  'Engineering',
-  'compute',
-];
-const resArr = [
-  'College of Engineering Building No. 1, room: 132',
-  'College of Humanities, room: 320',
-  'College of Engineering Building No. 9, room: 917',
-  'College of Engineering Building No. 7, room: 224',
-];
+const testDept = {
+  'Architectural Engineering': 'College of Engineering Building No. 1, room: 132',
+  'Korean Language and Literature': 'College of Humanities, room: 320',
+  'Engineering':'College of Engineering Building No. 9, room: 917',
+  'compute':'College of Engineering Building No. 7, room: 224'
+};
 
 const rtm = new RTMClient(token);
 
@@ -42,14 +36,15 @@ const rtm = new RTMClient(token);
 const assert = require('assert');
 const findDeptOffice = require('./dept');
 
-testArr.forEach((value, index) => {
+const keys = Object.keys(testDept);
+keys.forEach((dept) => {
   describe('테스트를 시작합니다.', async () => {
     let res;
-    before(async () => { res = await findDeptOffice(rtm, value, channel); });
+    before(async () => { res = await findDeptOffice(rtm, dept, channel); });
 
-    it('학과사무실 모듈 테스트', (done) => {
+    it('학과사무실 테스트', (done) => {
       console.log(res);
-      assert.equal(res, `success: ${resArr[index]}`);
+      assert.equal(res, `success: ${testDept[dept]}`);
       done();
     });
   });
