@@ -23,8 +23,8 @@ console.log(channel);
 const testDept = {
   'Architectural Engineering': 'College of Engineering Building No. 1, room: 132',
   'Korean Language and Literature': 'College of Humanities, room: 320',
-  'Engineering':'College of Engineering Building No. 9, room: 917',
-  'compute':'College of Engineering Building No. 7, room: 224'
+  Engineering: 'College of Engineering Building No. 9, room: 917',
+  compute: 'College of Engineering Building No. 7, room: 224',
 };
 
 const rtm = new RTMClient(token);
