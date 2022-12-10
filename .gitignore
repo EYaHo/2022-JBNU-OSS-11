@@ -1,0 +1,9 @@
+node_modules/
+token
+channelID
+botID
+
+### SSH ###
+**/.ssh/id_*
+**/.ssh/*_id_*
+**/.ssh/known_hosts
