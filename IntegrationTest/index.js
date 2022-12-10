@@ -69,13 +69,16 @@ const menuToText = (scrapedMenu) => {
   return text;
 };
 
-const countingStar = (res) => {
+const countingStar = function (res) {
   let star = '';
-  if (res >= 0 && res <= 20) {
+  const len = res.length;
+  if (res === '주말은 운영하지 않습니다.') {
+    star = '☆☆☆';
+  } else if (len > 0 && len <= 20) {
     star = '★☆☆';
-  } else if (res > 20 && res <= 30) {
+  } else if (len > 20 && len <= 30) {
     star = '★★☆';
-  } else if (res > 30) {
+  } else if (len > 30) {
     star = '★★★';
   }
   return star;
@@ -134,6 +137,7 @@ const oneCaseTest2 = (text, res) => {
   return true;
 };
 
+let buffer3;
 const oneCaseTest3 = (text, status) => {
   let res = '';
   const now = new Date();
@@ -146,9 +150,10 @@ const oneCaseTest3 = (text, status) => {
       } else {
         res = '주말은 운영하지 않습니다.';
       }
+      buffer3 = res;
       break;
     case 1:
-      res = countingStar(text.length);
+      res = countingStar(buffer3);
       break;
     case 2:
       for (let i = 0; i < 5; i += 1) {
@@ -158,7 +163,7 @@ const oneCaseTest3 = (text, status) => {
       break;
     case 3:
       for (let i = 0; i < 5; i += 1) {
-        res += `${weekday[i]} - ${countingStar(menuToText(scrap[i]).length)}`;
+        res += `${weekday[i]} - ${countingStar(menuToText(scrap[i]))}`;
         if (i < 4) res += '\n';
       }
       break;
