@@ -29,10 +29,9 @@ selector.forEach((value) => {
   describe('메뉴 테스트를 시작합니다.', async () => {
     let res;
     before(async () => { res = await webScraping(url, value); });
-    it('메뉴 selector 테스트', function (done) {
-      this.timeout(10000);
+    it('메뉴 selector 테스트', (done) => {
       assert.equal(res, 0);
       done();
-    });
+    }).timeout(100000);
   });
 });
