@@ -34,6 +34,6 @@ selector.forEach((value) => {
     await it('메뉴 selector 테스트', (done) => {
       assert.equal(res, 0);
       done();
-    });
+    }).timeout(1000000000);
   });
 });
