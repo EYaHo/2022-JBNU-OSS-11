@@ -92,7 +92,9 @@ const getWeekMenu = function () {
 
 const countingStar = function (res) {
   let star = '';
-  if (res >= 0 && res <= 20) {
+  if (res >= 0 && res <= 15) {
+    star = '☆☆☆';
+  } else if (res > 15 && res <= 20) {
     star = '★☆☆';
   } else if (res > 20 && res <= 30) {
     star = '★★☆';
