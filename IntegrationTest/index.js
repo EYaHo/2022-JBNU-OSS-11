@@ -101,8 +101,10 @@ const test3Data = {
 
 const test4Data = {
   학과사무실안내: null,
-  'Architectural Engineering': 'College of Engineering Building No. 1, room: 132',
-  'Korean Language and Literature': 'College of Humanities, room: 320',
+  'Architectural Engineering': 'The office of Architectural Engineering is located in: College of Engineering Building No. 1, room: 132',
+  'Korean Language and Literature': 'The office of Korean Language and Literature is located in: College of Humanities, room: 320',
+  Engineering: 'Urban Engineering을(를) 말씀하시는 건가요?\nCollege of Engineering Building No. 9, room: 917 입니다.',
+  compute: 'Computer Science and Engineering을(를) 말씀하시는 건가요?\nCollege of Engineering Building No. 7, room: 224 입니다.',
 };
 
 const rtm = new RTMClient(token);
@@ -174,7 +176,7 @@ const oneCaseTest3 = (text, status) => {
 };
 
 const oneCaseTest4 = (text, i) => {
-  if (text !== `The office of ${Object.keys(test4Data)[i]} is located in: ${Object.values(test4Data)[i]}`) {
+  if (text !== Object.values(test4Data)[i]) {
     console.log('case 실패.');
     return false;
   }
