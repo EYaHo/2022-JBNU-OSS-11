@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow-callback */
 const assert = require('assert');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -26,11 +27,15 @@ const selector = [
   'table:first>tbody>tr:first td:eq(4)>ul li font'];
 
 selector.forEach((value) => {
-  describe('테스트를 시작합니다.', async () => {
+  describe('메뉴 테스트를 시작합니다.', function () {
+    this.timeout(10000);
     let res;
-    beforeEach(async () => { res = await webScraping(url, value); });
-
-    it('메뉴 selector 테스트', (done) => {
+    before(async function () {
+      this.timeout(10000);
+      res = await webScraping(url, value);
+    });
+    it('메뉴 selector 테스트', function (done) {
+      this.timeout(10000);
       assert.equal(res, 0);
       done();
     });
