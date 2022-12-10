@@ -28,7 +28,7 @@ const selector = [
 selector.forEach((value) => {
   describe('메뉴 테스트를 시작합니다.', async () => {
     let res;
-    before(async () => {
+    beforeEach(async () => {
       res = await webScraping(url, value);
     });
     await it('메뉴 selector 테스트', (done) => {
