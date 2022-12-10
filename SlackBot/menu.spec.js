@@ -32,7 +32,7 @@ selector.forEach((value) => {
 
     it('메뉴 selector 테스트', (done) => {
       assert.equal(res, 0);
-      done().timeout(10000);
-    });
+      done();
+    }).timeout(10000);
   });
 });
