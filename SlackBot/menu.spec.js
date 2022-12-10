@@ -31,7 +31,7 @@ selector.forEach((value) => {
     before(async () => { res = await webScraping(url, value); });
     it('메뉴 selector 테스트', (done) => {
       assert.equal(res, 0);
-      done().timeout(1000000000);
-    });
+      done();
+    }).timeout(1000000000);
   });
 });
