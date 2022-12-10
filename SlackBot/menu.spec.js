@@ -26,7 +26,7 @@ const selector = [
   'table:first>tbody>tr:first td:eq(4)>ul li font'];
 
 selector.forEach((value) => {
-  describe('테스트를 시작합니다.', async () => {
+  describe('메뉴 테스트를 시작합니다.', async () => {
     let res;
     before(async () => { res = await webScraping(url, value); });
 
