@@ -34,9 +34,6 @@ __설치__
     
     npm install
 
-    <for Test>
-    npm install mocha -g
-
   3. 슬랙 봇 생성
     
     슬랙에 slack bot 앱 추가
