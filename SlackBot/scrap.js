@@ -92,20 +92,21 @@ const getWeekMenu = function () {
 
 const countingStar = function (res) {
   let star = '';
-  if (res >= 0 && res <= 20) {
+  const len = res.length;
+  if (res === '주말은 운영하지 않습니다.') {
+    star = '☆☆☆';
+  } else if (len > 0 && len <= 20) {
     star = '★☆☆';
-  } else if (res > 20 && res <= 30) {
+  } else if (len > 20 && len <= 30) {
     star = '★★☆';
-  } else if (res > 30) {
+  } else if (len > 30) {
     star = '★★★';
   }
   return star;
 };
 
 const getTodayRank = function () {
-  const leng = getTodayMenu().length;
-  console.log(leng);
-  const star = countingStar(leng);
+  const star = countingStar(getTodayMenu());
   return star;
 };
 
@@ -113,8 +114,7 @@ const dayRank = [];
 const getWeekRank = function () {
   for (let i = 0; i < 5; i += 1) {
     const todayMenu = week[i];
-    const res = menuToText(todayMenu).length;
-    const star = countingStar(res);
+    const star = countingStar(menuToText(todayMenu));
     dayRank[i] = star;
   }
   return dayRank;
