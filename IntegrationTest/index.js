@@ -16,8 +16,22 @@ try {
 }
 
 token = token.trim();
-const testChannel = 'C04BHL7V9GA';
-const testID = 'U047E2YLJE9';
+
+let testChannel;
+
+try {
+  testChannel = fs.readFileSync(`${__dirname}/channelID`).toString('utf-8');
+} catch (err) {
+  console.error(err);
+}
+
+let testID;
+
+try {
+  testID = fs.readFileSync(`${__dirname}/botID`).toString('utf-8');
+} catch (err) {
+  console.error(err);
+}
 
 console.log(token);
 
