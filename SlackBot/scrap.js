@@ -70,7 +70,7 @@ const getTodayMenu = function () {
   const day = now.getDay();
   console.log(day);
   let res;
-  if (day < 6) {
+  if (day > 0 && day < 6) {
     const todayMenu = week[day - 1];
     res = menuToText(todayMenu);
   } else {
